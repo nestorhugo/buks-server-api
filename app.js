@@ -1,10 +1,10 @@
 const express = require("express");
-const app = express();
-port = 8000;
+const rotaLivro = require("./routes/livro");
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
+const app = express();
+port = 8001;
+
+app.use("/livros", rotaLivro);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
