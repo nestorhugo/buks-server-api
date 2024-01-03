@@ -13,7 +13,17 @@ function getLivroPorId(id) {
   return livro;
 }
 
+function getLivroPorAutor(autor) {
+  const livros = getTodosLivros();
+  const livrosDoAutor = livros.filter((livro) => livro.autor === autor);
+  if (livrosDoAutor.length === 0) {
+    throw new Error("Nenhum livro encontrado");
+  }
+  return livrosDoAutor;
+}
+
 module.exports = {
   getTodosLivros,
   getLivroPorId,
+  getLivroPorAutor,
 };
