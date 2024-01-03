@@ -22,8 +22,15 @@ function getLivroPorAutor(autor) {
   return livrosDoAutor;
 }
 
+function insereLivro(livroNovo) {
+  const livros = getTodosLivros();
+  livros.push(livroNovo);
+  fs.writeFileSync("livros.json", JSON.stringify(livros));
+}
+
 module.exports = {
   getTodosLivros,
   getLivroPorId,
   getLivroPorAutor,
+  insereLivro,
 };
