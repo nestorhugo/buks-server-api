@@ -20,7 +20,12 @@ function insereFavorito(id) {
   const livros = JSON.parse(fs.readFileSync("livros.json"));
   const favoritos = getTodosFavoritos();
 
-  const livroInserido = livros.find((livro) => livro.id === id);
+  const livroInserido = livros.find((livro) => livro.id == id);
+
+  if (!livroInserido) {
+    throw new Error("Livro não encontrado");
+  }
+
   const novaListaFavoritos = [...favoritos, livroInserido];
 
   fs.writeFileSync("favoritos.json", JSON.stringify(novaListaFavoritos));
