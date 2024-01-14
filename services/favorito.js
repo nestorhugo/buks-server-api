@@ -6,12 +6,13 @@ function getTodosFavoritos() {
 
 function deletaFavoritoPorId(id) {
   const favoritos = getTodosFavoritos();
-  const favorito = favoritos.find((favorito) => favorito.id === id);
+  const favorito = favoritos.find((favorito) => favorito.id == id);
+
   if (!favorito) {
     throw new Error("Favorito não encontrado");
   }
   const favoritosAtualizados = favoritos.filter(
-    (favorito) => favorito.id !== id
+    (favorito) => favorito.id != id
   );
   fs.writeFileSync("favoritos.json", JSON.stringify(favoritosAtualizados));
 }
