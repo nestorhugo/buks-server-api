@@ -1,5 +1,3 @@
-import getTodosLivros from "./livro.js";
-
 const fs = require("fs");
 
 function getTodosFavoritos() {
@@ -19,7 +17,7 @@ function deletaFavoritoPorId(id) {
 }
 
 function insereFavorito(id) {
-  const livros = getTodosLivros();
+  const livros = JSON.parse(fs.readFileSync("livros.json"));
   const favoritos = getTodosFavoritos();
 
   const livroInserido = livros.find((livro) => livro.id === id);
